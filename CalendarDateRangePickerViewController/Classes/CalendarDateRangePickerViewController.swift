@@ -10,7 +10,7 @@ import UIKit
 
 public protocol CalendarDateRangePickerViewControllerDelegate {
     func didCancelPickingDateRange()
-    func didPickDateRange(startDate: Date!, endDate: Date!)
+    func didPickDateRange(startDate: Date, endDate: Date)
 }
 
 public class CalendarDateRangePickerViewController: UICollectionViewController {
@@ -63,10 +63,8 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     }
     
     @objc func didTapDone() {
-        if selectedStartDate == nil || selectedEndDate == nil {
-            return
-        }
-        delegate.didPickDateRange(startDate: selectedStartDate!, endDate: selectedEndDate!)
+        guard let selectedStartDate = selectedStartDate, let selectedEndDate = selectedEndDate else { return }
+        delegate.didPickDateRange(startDate: selectedStartDate, endDate: selectedEndDate)
     }
     
 }
