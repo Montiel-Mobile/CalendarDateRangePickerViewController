@@ -32,10 +32,12 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     public var navBarTintColor: UIColor? = nil
     public var navBarTitleTextAttributes: [NSAttributedString.Key: Any]? = nil
 
-    public var titleText = "Select Dates"
-    
-    private(set) var selectedStartDate: Date?
-    private(set) var selectedEndDate: Date?
+    public var titleText: String? = nil
+    public var cancelText: String? = nil
+    public var doneText: String? = nil
+
+    public var selectedStartDate: Date?
+    public var selectedEndDate: Date?
     
     init() {
         minimumDate = Date()
@@ -75,8 +77,8 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
         collectionView?.register(CalendarDateRangePickerHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
         collectionView?.contentInset = collectionViewInsets
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(CalendarDateRangePickerViewController.didTapCancel))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(CalendarDateRangePickerViewController.didTapDone))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: cancelText ?? "Cancel", style: .plain, target: self, action: #selector(CalendarDateRangePickerViewController.didTapCancel))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: doneText ?? "Done", style: .done, target: self, action: #selector(CalendarDateRangePickerViewController.didTapDone))
         self.navigationItem.rightBarButtonItem?.isEnabled = selectedStartDate != nil && selectedEndDate != nil
     }
     
