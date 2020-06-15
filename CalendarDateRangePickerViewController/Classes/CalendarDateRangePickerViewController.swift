@@ -26,18 +26,21 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     
     public var minimumDate: Date
     public var maximumDate: Date
-    
-    public var selectedStartDate: Date?
-    public var selectedEndDate: Date?
-    
+        
     public var selectedColor = UIColor(red: 66/255.0, green: 150/255.0, blue: 240/255.0, alpha: 1.0)
+    public var navBarBarTintColor: UIColor? = nil
+    public var navBarTintColor: UIColor? = nil
+    public var navBarTitleTextAttributes: [NSAttributedString.Key: Any]? = nil
+
     public var titleText = "Select Dates"
     
+    private(set) var selectedStartDate: Date?
+    private(set) var selectedEndDate: Date?
     
-    public override init(collectionViewLayout layout: UICollectionViewLayout) {
+    init() {
         minimumDate = Date()
         maximumDate = Calendar.current.date(byAdding: .year, value: 3, to: minimumDate)!
-        super.init(collectionViewLayout: layout)
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     required init?(coder: NSCoder) {
@@ -46,10 +49,23 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
         super.init(coder: coder)
     }
     
+    @available(*, unavailable) override public init(collectionViewLayout layout: UICollectionViewLayout) { fatalError() }
+
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = self.titleText
+        if let navBarBarTintColor = navBarBarTintColor {
+            self.navigationController?.navigationBar.barTintColor = navBarBarTintColor
+        }
+        if let navBarTintColor = navBarTintColor {
+            self.navigationController?.navigationBar.tintColor = navBarTintColor
+        }
+
+        if let navBarTitleTextAttributes = navBarTitleTextAttributes {
+            self.navigationController?.navigationBar.titleTextAttributes = navBarTitleTextAttributes
+        }
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
