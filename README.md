@@ -1,18 +1,5 @@
 # CalendarDateRangePickerViewController
 
-[![CI Status](http://img.shields.io/travis/miraan/CalendarDateRangePickerViewController.svg?style=flat)](https://travis-ci.org/miraan/CalendarDateRangePickerViewController)
-[![Version](https://img.shields.io/cocoapods/v/CalendarDateRangePickerViewController.svg?style=flat)](http://cocoapods.org/pods/CalendarDateRangePickerViewController)
-[![License](https://img.shields.io/cocoapods/l/CalendarDateRangePickerViewController.svg?style=flat)](http://cocoapods.org/pods/CalendarDateRangePickerViewController)
-[![Platform](https://img.shields.io/cocoapods/p/CalendarDateRangePickerViewController.svg?style=flat)](http://cocoapods.org/pods/CalendarDateRangePickerViewController)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-Here's what it looks like:
-
-![alt text](https://github.com/miraan/CalendarDateRangePickerViewController/blob/master/recording.gif "Select start and end dates easily.")
-
 ## Usage
 
 It's as simple as:
@@ -42,15 +29,6 @@ dateRangePickerViewController.selectedStartDate = Date()
 dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())
 dateRangePickerViewController.selectedColor = UIColor.red
 dateRangePickerViewController.titleText = "Select Date Range"
-```
-
-## Installation
-
-CalendarDateRangePickerViewController is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'CalendarDateRangePickerViewController'
 ```
 
 ## Author
