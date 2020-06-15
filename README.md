@@ -5,7 +5,7 @@
 It's as simple as:
 
 ```swift
-let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
+let dateRangePickerViewController = CalendarDateRangePickerViewController()
 dateRangePickerViewController.delegate = self
 let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
 self.navigationController?.present(navigationController, animated: true, completion: nil)
@@ -16,7 +16,7 @@ Just implement the delegate methods:
 ```swift
 protocol CalendarDateRangePickerViewControllerDelegate {
     func didCancelPickingDateRange()
-    func didPickDateRange(startDate: Date!, endDate: Date!)
+    func didPickDateRange(startDate: Date, endDate: Date)
 }
 ```
 
@@ -28,6 +28,9 @@ dateRangePickerViewController.maximumDate = Calendar.current.date(byAdding: .yea
 dateRangePickerViewController.selectedStartDate = Date()
 dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())
 dateRangePickerViewController.selectedColor = UIColor.red
+dateRangePickerViewController.navBarBarTintColor = UIColor.blue
+dateRangePickerViewController.navBarTintColor = UIColor.white
+dateRangePickerViewController.navBarTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.system as Any]
 dateRangePickerViewController.titleText = "Select Date Range"
 ```
 
