@@ -57,6 +57,8 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedEndDate = selectedEndDate?.addingTimeInterval(60 * 60 * -24)
+        
         self.title = self.titleText
         if let navBarBarTintColor = navBarBarTintColor {
             self.navigationController?.navigationBar.barTintColor = navBarBarTintColor
@@ -87,7 +89,7 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     }
     
     @objc func didTapDone() {
-        guard let selectedStartDate = selectedStartDate, let selectedEndDate = selectedEndDate else { return }
+        guard let selectedStartDate = selectedStartDate, let selectedEndDate = selectedEndDate?.addingTimeInterval(60 * 60 * 24) else { return }
         delegate.didPickDateRange(startDate: selectedStartDate, endDate: selectedEndDate)
     }
     
