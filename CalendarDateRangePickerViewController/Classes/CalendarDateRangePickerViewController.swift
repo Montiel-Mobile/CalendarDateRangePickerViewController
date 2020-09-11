@@ -161,7 +161,7 @@ extension CalendarDateRangePickerViewController {
             headerView.label.text = getMonthLabel(date: getFirstDateForSection(section: indexPath.section))
             return headerView
         default:
-            fatalError("Unexpected element kind")
+            return UICollectionReusableView()
         }
     }
     
